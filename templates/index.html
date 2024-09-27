@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Categorization</title>
+</head>
+<body>
+    <h1>Video Categorization</h1>
+    <form method="post">
+        <label for="video_title">Video Title:</label>
+        <input type="text" id="video_title" name="video_title" required><br>
+
+        <label for="video_description">Video Description:</label>
+        <textarea id="video_description" name="video_description" required></textarea><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if assistant_response %}
+        <h2>Model Prediction:</h2>
+        <p>The model determined that this video belongs to the category: {{ assistant_response }}</p>
+
+        <h2>Video Preview:</h2>
+        <img src="data:image/png;base64,{{ video_preview }}" alt="Video Preview">
+        <div>{{ video_html|safe }}</div>
+    {% endif %}
+</body>
+</html>
