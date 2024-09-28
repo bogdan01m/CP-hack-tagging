@@ -3,10 +3,9 @@
 ## Docker Image Pull Command
 
 To pull the Docker image for the llava-app, use the following command:
-
-"""
+```bash
 docker pull bogdan01m/llava-app:tagname
-"""
+```
 
 This command will pull the Docker image with the tag `tagname` from the Docker Hub repository `bogdan01m/llava-app`.
 
