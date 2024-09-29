@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Categorization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], textarea, input[type="file"] {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .result h2 {
+            margin-bottom: 10px;
+        }
+        .result p {
+            margin-bottom: 10px;
+        }
+        .result img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .result div {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Video Categorization</h1>
+        <form method="post" enctype="multipart/form-data">
+            <label for="video_title">Video Title:</label>
+            <input type="text" id="video_title" name="video_title" required><br>
+
+            <label for="video_description">Video Description:</label>
+            <textarea id="video_description" name="video_description" required></textarea><br>
+
+            <label for="video_file">Video File:</label>
+            <input type="file" id="video_file" name="video_file" accept="video/mp4" required><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        {% if assistant_response %}
+            <div class="result">
+                <h2>Model Prediction:</h2>
+                <p>The model determined that this video belongs to the category: {{ assistant_response }}</p>
+
+                <h2>Video Preview:</h2>
+                <img src="data:image/png;base64,{{ video_preview }}" alt="Video Preview">
+                <div>{{ video_html|safe }}</div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

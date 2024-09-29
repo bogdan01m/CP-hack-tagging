@@ -1,0 +1,13 @@
+gunicorn
+flask
+pandas
+numpy
+av
+matplotlib
+transformers
+torch
+bitsandbytes
+git+https://github.com/huggingface/transformers.git
+protobuf
+sentencepiece
+accelerate
